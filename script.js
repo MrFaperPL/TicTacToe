@@ -3,6 +3,7 @@ const squareElement = document.querySelectorAll("[data-square]");
 const endMessage = document.querySelector("[data-winner-message]");
 const showEndScreen = document.getElementById("end-screen");
 const restartButton = document.getElementById("restart-button");
+const mainContainer = document.querySelector("[data-main-container]");
 const winCondition = [
     [0, 1, 2],
     [3, 4, 5],
@@ -16,7 +17,6 @@ const winCondition = [
 let xTurn;
 
 function startGame() {
-    console.log("bruh");
     xTurn = true;
     squareElement.forEach(square => {
         square.classList.remove("x");
@@ -62,6 +62,7 @@ function endGame(draw) {
     }
     else {
         endMessage.innerText = `${xTurn ? "X" : "O"} WINS!`;
+        xTurn ? xTurn = true : setHover();
     }
     showEndScreen.classList.add("show");
 }
@@ -89,3 +90,30 @@ function handleClick(event) {
 startGame();
 
 restartButton.addEventListener("click", startGame);
+
+// Dark theme logic
+
+const darkModeToggle = document.getElementById("dark-mode-toggle");
+const sun = document.getElementById("sun");
+const moon = document.getElementById("moon");
+let isDarkTheme = false;
+
+function swapDarkTheme() {
+    isDarkTheme = !isDarkTheme;
+}
+
+function toggleDarkTheme() {
+    if(isDarkTheme) {
+        mainContainer.classList.remove("invert-color");
+        sun.classList.remove("invisible");
+        moon.classList.add("invisible");
+    }
+    else {
+        mainContainer.classList.add("invert-color");
+        sun.classList.add("invisible");
+        moon.classList.remove("invisible");
+    }
+    swapDarkTheme();
+}
+
+darkModeToggle.addEventListener("change", toggleDarkTheme)

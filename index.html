@@ -11,7 +11,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="main-container">
+    <div class="main-container" data-main-container>
+        <label id="dark-mode-toggle-custom">
+            <img src="/icons/sun.png" class="icon" id="sun">
+            <img src="/icons/moon.png" class="icon invisible" id="moon">
+            <input type="checkbox" id="dark-mode-toggle">
+        </label>
         <div class="grid x" id="grid">
             <div class="square" data-square></div>
             <div class="square" data-square></div>

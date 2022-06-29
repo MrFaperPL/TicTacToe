@@ -4,11 +4,13 @@
 }
 
 .main-container {
+    background-color: white;
     width: 100vw;
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 .grid {
@@ -128,4 +130,55 @@
 
 .end-screen.show {
     display: flex;
+}
+
+#dark-mode-toggle-custom
+{
+    background-color: black;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    cursor: pointer;
+}
+
+#dark-mode-toggle {
+    top: 16px;
+    right: 16px;
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.invert-color {
+    filter: invert(1);
+    /* animation: fade 0.5s linear; */
+}
+
+.icon {
+    width: 32px;
+    height: 32px;
+}
+
+#moon {
+    filter: invert(1);
+}
+
+.invisible {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/*
+
+@keyframes fade {
+    0% {opacity: 0};
+    100% {opacity: 1};
 }
