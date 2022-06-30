@@ -1,3 +1,5 @@
+// Main variables needed to run the game
+
 const grid = document.getElementById("grid");
 const squareElement = document.querySelectorAll("[data-square]");
 const endMessage = document.querySelector("[data-winner-message]");
@@ -15,6 +17,17 @@ const winCondition = [
     [2, 4, 6]
 ];
 let xTurn;
+
+// Variables needed for counting players scores
+
+const namePlayer1 = document.getElementById("player1");
+const namePlayer2 = document.getElementById("player2");
+const documentScorePlayer1 = document.getElementById("score-player1");
+const documentScorePlayer2 = document.getElementById("score-player2");
+let scorePlayer1 = 0;
+let scorePlayer2 = 0;
+
+// Main game logic
 
 function startGame() {
     xTurn = true;
@@ -61,10 +74,18 @@ function endGame(draw) {
         endMessage.innerText = "DRAW!";
     }
     else {
-        endMessage.innerText = `${xTurn ? "X" : "O"} WINS!`;
+        if(xTurn) {
+            endMessage.innerText = "X WINS!";
+            documentScorePlayer1.innerText = ++scorePlayer1;
+        }
+        else {
+            endMessage.innerText = "O WINS!";
+            documentScorePlayer2.innerText = ++scorePlayer2;
+        }
         xTurn ? xTurn = true : setHover();
     }
     showEndScreen.classList.add("show");
+    
 }
 
 function swapTurn() {
@@ -117,3 +138,27 @@ function toggleDarkTheme() {
 }
 
 darkModeToggle.addEventListener("change", toggleDarkTheme)
+
+/*
+
+// This is JS part of the idea to add animation while dark mode is changing
+// Might think of it later
+
+// Note: The animation works only half way while changing light theme to dark theme but not the other way
+
+darkModeToggle.onchange = function(){
+    if(isDarkTheme) {
+        mainContainer.classList.toggle("fade-out");
+        setTimeout(() => {
+            mainContainer.classList.remove("fade-out");
+        }, 500);
+    }
+    else {
+        mainContainer.classList.toggle("fade-in");
+        setTimeout(() => {
+            mainContainer.classList.remove("fade-in");
+        }, 500);
+    }
+}
+
+*/
