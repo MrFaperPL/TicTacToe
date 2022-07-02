@@ -85,7 +85,6 @@ function endGame(draw) {
         xTurn ? xTurn = true : setHover();
     }
     showEndScreen.classList.add("show");
-    
 }
 
 function swapTurn() {
@@ -146,17 +145,17 @@ darkModeToggle.addEventListener("change", toggleDarkTheme)
 
 // Note: The animation works only half way while changing light theme to dark theme but not the other way
 
-darkModeToggle.onchange = function(){
+darkModeToggle.onchange = function() {
     if(isDarkTheme) {
-        mainContainer.classList.toggle("fade-out");
+        mainContainer.classList.toggle("fade");
         setTimeout(() => {
-            mainContainer.classList.remove("fade-out");
+            mainContainer.classList.remove("fade");
         }, 500);
     }
     else {
-        mainContainer.classList.toggle("fade-in");
+        mainContainer.classList.toggle("fade");
         setTimeout(() => {
-            mainContainer.classList.remove("fade-in");
+            mainContainer.classList.remove("fade");
         }, 500);
     }
 }
